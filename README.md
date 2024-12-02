@@ -9,35 +9,29 @@ An L-System uses a string rewriting mechanism:
     Iterations: Apply the rules iteratively to grow the string.
     Turtle Graphics: Interpret the string using drawing commands (e.g., F = forward, + = turn right, - = turn left).
 
-Getting Started
-Prerequisites
+<h2>Getting Started</h2>
+<h3>Prerequisites</h3>
 
-    Python 3.x or any other language supporting string manipulation and turtle graphics.
-    Libraries: matplotlib, numpy (optional for advanced features).
+    Python 3.x
+    Libraries: pygame.
 
-Installation
+<h3>Installation</h3>
 
-    Clone the repository:
+Clone the repository:
 
-git clone https://github.com/your-username/l-system-flower-generator.git
-cd l-system-flower-generator
+    git clone https://github.com/your-username/l-system-flower-generator.git
+    cd l-system-flower-generator
 
 Install dependencies:
 
-    pip install matplotlib numpy
+    pip install pygame
 
-Usage
+<h3>Usage</h3>
 
 Run the script:
 
-python lsystem_flower.py
+    python lsystem_flower.py
 
-Modify parameters in the script to change:
+<h3>Example Output</h3>
 
-    Axiom: Starting pattern.
-    Rules: Growth rules.
-    Angle: Turning angle for the turtle.
-    Iterations: Number of string rewrites.
-
-Example Output
-
+<img src="https://imgur.com/yC5JN0W" alt="Flower" width="300"/>
