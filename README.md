@@ -1,4 +1,4 @@
-# L-system-Generator
+# L-system-FlowerPlant-Generator
 
 How It Works
 
