@@ -21,7 +21,7 @@ Install dependencies:
 
 Run the script:
 
-    python lsystem_flower.py
+    python generator.py
 
 <h3>Example Output</h3>
 
