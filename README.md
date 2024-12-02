@@ -34,4 +34,5 @@ Run the script:
 
 <h3>Example Output</h3>
 
-<img src="https://imgur.com/yC5JN0W" alt="Flower" width="300"/>
+![Flower](https://i.imgur.com/yC5JN0W.png)
+
