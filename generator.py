@@ -5,24 +5,62 @@ import random
 mixer.init()
 
 
-interations = 6
+interations = 10
 angle = 25.0
 
 base = "X"
 rules = {
-    "X" : " F+[[X]-X]-F[-FX]+X",
-    "F" : "FF"
+    "X": [
+        {"rule": "F[+X][-X]FX", "prob": 15},
+        {"rule": "F[+X]F[-X]+X", "prob": 10},
+        {"rule": "F[+X][-FX]F", "prob": 10},
+        {"rule": "F[-X]F[+X]FX", "prob": 10},
+        {"rule": "F[+X][-X][FX]", "prob": 5},
+        {"rule": "F[+FX]-F[-FX]", "prob": 5},
+        {"rule": "F[-FX]+F[+FX]", "prob": 5},
+        {"rule": "F[-FX][-X][+FX]", "prob": 5},
+        {"rule": "[+F[-X]][-F[+X]]", "prob": 5},
+        {"rule": "F[+X]F[-X]F", "prob": 5},
+        {"rule": "FF[+X]F[-X]X", "prob": 5},
+        {"rule": "F[+X][-X]FXF", "prob": 5},
+        {"rule": "F[+X][FX][-X]", "prob": 5},
+        {"rule": "F[+FX][-FX]FX", "prob": 5}
+    ],
+    "F": [
+        {"rule": "FF", "prob": 20},
+        {"rule": "FFF", "prob": 5},
+        {"rule": "F[+F]F[-F]", "prob": 20},
+        {"rule": "F[-F][+F]", "prob": 15},
+        {"rule": "[FF][+F][-F]", "prob": 15},
+        {"rule": "F[-F][+F]F", "prob": 10},
+        {"rule": "F[+FF][-FF][F]", "prob": 10},
+        {"rule": "F[-FF][+FF]FF", "prob": 5}
+    ]
 }
+
 
 def gen():
     string = base
     for i in range(interations):
         new_string = ""
         for j in string:
-            new_string+= rules.get(j,j)
+            new_string+= getOne(rules, j)
         string = new_string
     return string
     
+def getOne(rules, char):
+    if char not in rules:  
+        return char
+
+    choices = rules[char]
+    
+    cumulative = 0
+    for choice in choices:
+        rnd = random.randint(0, 100)
+        if rnd <= choice["prob"]:
+            return choice["rule"]
+    return char  
+
 
 def draw(t, instructions, length, angle):
     stack = []
@@ -64,10 +102,9 @@ def main():
     t.hideturtle()
     t.speed(0)
     t.penup()
-    t.goto(-150, -250)  
+    t.goto(0, -250)  
     t.pendown()
     t.left(90)  
-    t.seth(45)
     command_string = gen()
     draw(t, command_string, 4.8, angle)
 
